@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func
+from sqlalchemy.orm import relationship
 
 from .base_model import Base
 
@@ -10,6 +11,8 @@ class LogModel(Base):
     status_code = Column(Integer)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
     message = Column(String)
+
+    process = relationship('ProcessModel')
 
     def __repr__(self):
         return (f"<Logs(id={self.id}, id_process={self.id_process}, "

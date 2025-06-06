@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from .repository import Repository
 
@@ -16,10 +16,10 @@ class LogRepository(Repository):
         return log
 
     def get_by_id(self, log_id: int):
-        return self.session.query(LogModel).filter(LogModel.id == log_id).first()
+        return self.session.query(LogModel).filter(LogModel.id == log_id).options(joinedload(LogModel.process)).first()
 
     def get_all(self):
-        return self.session.query(LogModel).all()
+        return self.session.query(LogModel).options(joinedload(LogModel.process)).all()
 
     def delete(self, log_id: int):
         log = self.get_by_id(log_id)
