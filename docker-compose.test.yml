@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  test:
+    build: .
+    environment:
+      - ENV=test
+      - PYTHONPATH=/app
+    volumes:
+      - .:/app
+    command: pytest tests/ 
