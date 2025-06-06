@@ -1,11 +1,9 @@
 import json
-from datetime import datetime, UTC
 
 def test_create_log(client):
     payload = {
         "id_process": 1,
         "status_code": 200,
-        "timestamp": datetime.now(UTC).isoformat(),
         "message": "Log de teste"
     }
 
