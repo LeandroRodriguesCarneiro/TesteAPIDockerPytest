@@ -18,7 +18,7 @@ def test_get_process(client):
 
     assert response.status_code == 200
     
-    logs = response.get_json()
+    process = response.get_json()
     
-    assert isinstance(logs, list)
-    assert len(logs) >= 1
+    assert isinstance(process, list)
+    assert len(process) >= 1

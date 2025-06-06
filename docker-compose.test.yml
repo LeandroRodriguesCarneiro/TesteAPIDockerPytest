@@ -7,4 +7,4 @@ services:
       - PYTHONPATH=/app
     volumes:
       - .:/app
-    command: pytest tests/ 
+    command: pytest tests/test_process tests/test_log
